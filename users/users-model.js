@@ -28,7 +28,7 @@ function getEquipmentById(id){
 }
 
 function getRentalsById(id){
-  return db("rentals").where("user_id", id)
+  return db("rentals").where("user_id", id).orWhere("renter_id", id)
 }
 
 
