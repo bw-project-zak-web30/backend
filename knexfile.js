@@ -30,6 +30,7 @@ module.exports = {
     production: {
       client: 'pg', //npm i pg
       connection: process.env.DATABASE_URL, // provided by Heroku
+      ssl: true,
       migrations: {
         directory: "./database/migrations",
       },
