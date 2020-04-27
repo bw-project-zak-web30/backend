@@ -4,6 +4,17 @@ const jwt = require("jsonwebtoken")
 const Auth = require("../auth/auth-model.js")
 const secrets = require("../api/secrets.js")
 
+router.get('/', (req, res) => {
+  Auth.getAll()
+    .then(users => {
+      res.status(200).json({users})
+    })
+    .catch(error => {
+      console.log(error);
+      res.status(500).json({ errorMessage: error.message });
+    });
+})
+
 router.post('/register', (req, res) => {
   let user = req.body
   const rounds = process.env.HASH_ROUNDS || 6
