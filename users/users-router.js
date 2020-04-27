@@ -2,6 +2,7 @@ const express = require('express');
 
 const Users = require('./users-model');
 
+
 const router = express.Router();
 
 
@@ -84,21 +85,22 @@ router.get('/:id', (req, res) => {
     });
   });
 
-  
-router.get("/:id/equipment", (req, res) => {
-  Users
-    .getEquipment(req.params.id)
-    .then((user) => {
-      if (user.length) {
-        res.json(user);
-      } else {
-        res.status(404).json({ msg: "could not find equipment for user" });
-      }
-    })
-    .catch((err) => {
-      res.status(500).json({ message: "Failed to get equipment", err });
-    });
-});
+  //get equipment for active user.
+  router.get("/:id/equipment", (req, res) => {
+    const { id } = req.params
+
+    Users.getEquipmentById(id)
+      .then(equip => {
+        if (equip) {
+          res.json(equip);
+        } else {
+          res.status(404).json({ message: 'Could not find equipment with given user id.' })
+        }
+      })
+      .catch(err => {
+        res.status(500).json({ message: 'Failed to get equipment' });
+      });
+  });
 
 
 
