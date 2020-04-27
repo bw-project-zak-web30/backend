@@ -103,6 +103,22 @@ router.get('/:id', (req, res) => {
   });
 
 
+  router.get("/:id/rentals", (req, res) => {
+    const { id } = req.params
+
+    Users.getRentalsById(id)
+      .then(equip => {
+        if (equip) {
+          res.json(equip);
+        } else {
+          res.status(404).json({ message: 'Could not find any rentals with given user id.' })
+        }
+      })
+      .catch(err => {
+        res.status(500).json({ message: 'Failed to get rentals' });
+      });
+  });
+
 
 
 module.exports = router;

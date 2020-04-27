@@ -27,6 +27,10 @@ function getEquipmentById(id){
   return db("equipment").where("owner_id", id)
 }
 
+function getRentalsById(id){
+  return db("rentals").where("user_id", id)
+}
+
 
 module.exports = {
   get,
@@ -35,4 +39,5 @@ module.exports = {
   update,
   remove,
   getEquipmentById,
+  getRentalsById
 };
