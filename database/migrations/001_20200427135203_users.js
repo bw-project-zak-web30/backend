@@ -6,7 +6,7 @@ exports.up = function(knex) {
       tbl.string('username', 255).notNullable().unique();
       tbl.string('password', 255).notNullable();
       tbl.string("name", 255).notNullable();
-      tbl.integer("city").notNullable()
+      tbl.string("city").notNullable()
       tbl.integer("user_rating", 5).unsigned()
       
   })
