@@ -7,14 +7,15 @@ exports.up = function(knex) {
           tbl.decimal('price').notNullable()
           tbl.integer('timeframe').notNullable()
           tbl.text('details')
-          tbl.integer('owner-id')
+          tbl.boolean('renting').defaultTo(false)
+          tbl.integer('owner_id')
               .unsigned()
               .notNullable()
               .references('id')
               .inTable('users')
               .onUpdate('CASCADE')
               .onDelete('CASCADE')
-          tbl.boolean('renting').defaultTo(false)
+          
       })
   };
   
