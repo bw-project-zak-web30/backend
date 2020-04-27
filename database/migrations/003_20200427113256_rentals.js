@@ -2,8 +2,8 @@ exports.up = function(knex) {
     return knex.schema
       .createTable('rentals', tbl => {
           tbl.increments();
-          tbl.date('return-date').notNullable()
-          tbl.date('start-date').notNullable()
+          tbl.date('return_date').notNullable()
+          tbl.date('start_date').notNullable()
           tbl.text('details').notNullable()
           tbl.integer('user_id')
               .unsigned()
