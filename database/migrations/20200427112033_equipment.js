@@ -1,4 +1,3 @@
-
 exports.up = function(knex) {
     return knex.schema
       .createTable('equipment', tbl => {
@@ -7,7 +6,7 @@ exports.up = function(knex) {
           tbl.decimal('price').notNullable()
           tbl.integer('timeframe').notNullable()
           tbl.text('details')
-          tbl.integer('owner-id')
+          tbl.integer('owner_id')
               .unsigned()
               .notNullable()
               .references('id')
