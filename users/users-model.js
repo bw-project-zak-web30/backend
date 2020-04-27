@@ -23,10 +23,18 @@ function remove(id) {
   return db("users").where("id", id).del();
 }
 
+function getEquipment(owner_id) {
+  return db("equipment as e")
+    .join("users as u", "e.id", "u.id")
+    .select("e.name", "e.price")
+    .where({ owner_id});
+}
+
 module.exports = {
   get,
   getById,
   add,
   update,
   remove,
+  getEquipment
 };

@@ -84,6 +84,22 @@ router.get('/:id', (req, res) => {
     });
   });
 
+  
+router.get("/:id/equipment", (req, res) => {
+  Users
+    .getEquipment(req.params.id)
+    .then((user) => {
+      if (user.length) {
+        res.json(user);
+      } else {
+        res.status(404).json({ msg: "could not find equipment for user" });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "Failed to get equipment", err });
+    });
+});
+
 
 
 
