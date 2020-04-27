@@ -2,6 +2,7 @@ const express = require('express');
 
 const Users = require('./users-model');
 
+
 const router = express.Router();
 
 
@@ -82,6 +83,23 @@ router.get('/:id', (req, res) => {
     .catch(err => {
       res.status(500).json({ message: 'Failed to delete user' });
     });
+  });
+
+  //get equipment for active user.
+  router.get("/:id/equipment", (req, res) => {
+    const { id } = req.params
+
+    Users.getEquipmentById(id)
+      .then(equip => {
+        if (equip) {
+          res.json(equip);
+        } else {
+          res.status(404).json({ message: 'Could not find equipment with given user id.' })
+        }
+      })
+      .catch(err => {
+        res.status(500).json({ message: 'Failed to get equipment' });
+      });
   });
 
 
