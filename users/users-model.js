@@ -23,10 +23,16 @@ function remove(id) {
   return db("users").where("id", id).del();
 }
 
+function getEquipmentById(id){
+  return db("equipment").where("owner_id", id)
+}
+
+
 module.exports = {
   get,
   getById,
   add,
   update,
   remove,
+  getEquipmentById,
 };

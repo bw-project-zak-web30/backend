@@ -1,7 +1,7 @@
 exports.seed = function(knex, Promise) {
     // Deletes ALL existing entries and resets ids
     return knex('users')
-      .truncate()
+      .del()
       .then(function() {
         return knex('users').insert([
           { username: "sam1", password: "test", city: "DC", name: "sam" },
