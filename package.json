@@ -28,6 +28,7 @@
     "pg": "^8.0.3"
   },
   "devDependencies": {
+    "node-pre-gyp": "^0.14.0",
     "nodemon": "^2.0.3",
     "sqlite3": "^4.1.1"
   }
