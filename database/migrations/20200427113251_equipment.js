@@ -7,7 +7,7 @@ exports.up = function(knex) {
           tbl.decimal('price').notNullable()
           tbl.integer('timeframe').notNullable()
           tbl.text('details')
-          tbl.foreign('owner_id')
+          tbl.integer('owner_id')
               .unsigned()
               .notNullable()
               .references('id')
