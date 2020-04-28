@@ -102,6 +102,23 @@ router.get('/:id', (req, res) => {
       });
   });
 
+  router.post('/:id/equipment', (req, res) => {
+    const { id } = req.params
+    const data = req.body
+
+    Users.addEquipment(data)
+      .then(equip => {
+        if (equip) {
+          res.status(201).json({message: "equipment added successfully", data});
+        } else {
+          res.status(404).json({ message: 'Could not find equipment with given user id.' })
+        }
+      })
+      .catch(err => {
+        res.status(500).json({ message: 'Failed to add equipment' });
+      });
+  })
+
   router.put("/:id/equipment/:itemId", (req, res) => {
     const { id } = req.params.id
     const { itemId } = req.params

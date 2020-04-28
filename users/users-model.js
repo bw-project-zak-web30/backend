@@ -49,6 +49,10 @@ function removeEquipment(id) {
   return db('equipment').where({ id: id }).del();
 }
 
+function addEquipment(data) {
+  return db("equipment").insert(data)
+}
+
 
 module.exports = {
   get,
@@ -61,4 +65,5 @@ module.exports = {
   getRentingById,
   updateEquipment,
   removeEquipment,
+  addEquipment,
 };
