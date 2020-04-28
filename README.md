@@ -12,9 +12,7 @@ address for requests : https://usemytechstuffmb.herokuapp.com
     BODY - all fields required.
         {
             username: "test",
-            password: "test",
-            name: "test name",
-            city: "Test City",
+            password: "test"
         }
 
     RETURNS - if successful
@@ -30,6 +28,8 @@ address for requests : https://usemytechstuffmb.herokuapp.com
         {
             username: "test",
             password: "test",
+            name: "test name",
+            city: "Test City",
         }
 
     RETURNS - if successful
@@ -58,8 +58,39 @@ address for requests : https://usemytechstuffmb.herokuapp.com
     ENDPOINT IN PROGRESS
 
 
+## USER -OWNER- GET for all equipment they own.
+    GET /api/users/:id/equipment
+
+    RETURNS - if successful, an array of equipment
+        [
+            {
+                "id": 5,
+                "name": "Hstern's scanner",
+                "price": 100,
+                "timeframe": 7,
+                "details": "you can use my scanner for 7 days",
+                "renting": 0,
+                "owner_id": 3
+            }
+        ]
+
+# USER owner can update their equipment
+    Put
+
+    {
+        "id": 5,
+        "name": "Hstern's scanner",
+        "price": 100,
+        "timeframe": 7,
+        "details": "you can use my scanner for 7 days",
+        "owner_id": 3
+    }
+
+## user ownder can delete equipment
+    ENDPOINT IN PROGRESS
+
 ## USER -OWNER- GET for all equipment they are renting out.
-    GET /api/users/rentals
+    GET /api/users/:id/rentals
 
     RETURNS - if successful, an array of rentals
         [
@@ -73,13 +104,6 @@ address for requests : https://usemytechstuffmb.herokuapp.com
                 "equipment_id": 2
             }
         ]
-
-# USER owner can update their equipment
-    ENDPOINT IN PROGRESS
-
-## user ownder can delete equipment
-    ENDPOINT IN PROGRESS
-
 
 ## user can display all items the are borrowing
     GET /api/users/:id/renting
