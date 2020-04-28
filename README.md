@@ -86,7 +86,7 @@ address for requests : https://usemytechstuffmb.herokuapp.com
         "owner_id": 3
     }
 
-## user ownder can delete equipment
+## user owner can delete equipment
     ENDPOINT IN PROGRESS
 
 ## USER -OWNER- GET for all equipment they are renting out.
