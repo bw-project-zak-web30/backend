@@ -1,5 +1,7 @@
 const express = require('express');
 
+const db = require("../database/dbConfig");
+
 const Equipment = require('./equipment-model');
 
 
@@ -37,58 +39,26 @@ router.get('/:id', (req, res) => {
     });
   });
 
-  // add a new equipment
+  //user click.
+  //reference the item, user, and the owner
+  //get from front-end userId, equipmentId
+
+
   router.post("/", (req, res) => {
-    Equipment.add(req.body)
-      .then((equipment) => {
-        res.status(201).json(equipment);
-      })
-      .catch((err) => {
-        console.log(err);
-        res.status(500).json({ error: err.message });
-      });
-  });
-
-// update equipment
-  router.put('/:id', (req, res) => {
-    const { id } = req.params;
-    const changes = req.body;
+    const rental = req.body
   
-    Equipment.getById(id)
-    .then(equipment => {
-      if (equipment) {
-        Equipment.update(changes, id)
-        .then(updatedEquipment => {
-          res.json(updatedEquipment);
-        });
+  console.log(rental)
+  Equipment.rentEquipment(rental)
+  .then(rent => {
+    if (rent) {
+        res.status(201);
       } else {
-        res.status(404).json({ message: 'Could not find equipment with given id' });
-      }
-    })
-    .catch (err => {
-      res.status(500).json({ message: 'Failed to update equipment' });
-    });
-  });
-
-
-  router.delete('/:id', (req, res) => {
-    const { id } = req.params;
-  
-    Equipment.remove(id)
-    .then(deleted => {
-      if (deleted) {
-        res.json({ removed: deleted });
-      } else {
-        res.status(404).json({ message: 'Could not find equipment with given id' });
+        res.status(404).json({ message: 'Could not find equipment with given id.' })
       }
     })
     .catch(err => {
-      res.status(500).json({ message: 'Failed to delete equipment' });
+      res.status(500).json({ message: 'Failed to add rental', errorMessage: err });
     });
-  });
-
-
-
-
+  })
 
 module.exports = router;

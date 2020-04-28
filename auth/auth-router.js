@@ -41,7 +41,7 @@ router.post('/login', (req, res) => {
     .then(([user]) => {
       if (user && bcrypt.compareSync(password, user.password)) {
         const token = generateToken(user);
-        res.status(200).json({ message: "Welcome!", token });
+        res.status(200).json({ message: "Welcome!", token, userId:user.id});
       } else {
         res.status(401).json({ message: "credentials incorrect" });
       }

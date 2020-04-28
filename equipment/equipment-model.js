@@ -7,20 +7,8 @@ function getById(id) {
   return db("equipment").where({ id }).first();
 }
 
-
-function add(user) {
-  return db("equipment").insert(user)
-}
-
-function update(changes, id) {
-  return db("equipment")
-    .where({ id })
-    .update(changes)
-    .then(() => getById(id));
-}
-
-function remove(id) {
-  return db("equipment").where("id", id).del();
+function rentEquipment(rental) {
+  return db("rentals").insert(rental)
 }
 
 
@@ -28,7 +16,5 @@ function remove(id) {
 module.exports = {
   get,
   getById,
-  add,
-  update,
-  remove
+  rentEquipment,
 };
