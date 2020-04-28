@@ -102,25 +102,37 @@ router.get('/:id', (req, res) => {
       });
   });
 
-  // update equipment for active user
-  // put request
-  // get the item. 
-  // if the userId and itemId match update item.
   router.put("/:id/equipment/:itemId", (req, res) => {
     const { id } = req.params.id
     const { itemId } = req.params
     const changes = req.body
 
-    Users.updateEquipment(id, itemId, changes)
+    Users.updateEquipment(itemId, changes)
       .then(equip => {
         if (equip) {
-          res.status(201).json(eqip)
+          res.status(201).json(equip)
         } else {
-          res.status(404).json({ message: 'Could not find equipment' })
+          res.status(404).json({ message: 'Could not find equipment', })
         }
       })
       .catch(err => {
-        res.status(500).json({ message: 'Failed to update equipment' });
+        res.status(500).json({ message: 'Failed to update equipment', errorMessage: err });
+      });
+  })
+
+  router.delete("/:id/equipment/:itemId", (req, res) => {
+    const { itemId } = req.params
+
+    Users.removeEquipment(itemId)
+      .then(deleted => {
+        if (deleted) {
+          res.status(200).json({ removed: deleted });
+        } else {
+          res.status(404).json({ message: 'Could not find equipment with given id' });
+        }
+      })
+      .catch(err => {
+        res.status(500).json({ message: 'Failed to delete equipment', errorMessage: err});
       });
   })
 
@@ -136,7 +148,7 @@ router.get('/:id', (req, res) => {
         }
       })
       .catch(err => {
-        res.status(500).json({ message: 'Failed to get rentals' });
+        res.status(500).json({ message: 'Failed to get rentals', errorMessage: err });
       });
   });
 

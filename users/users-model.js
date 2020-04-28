@@ -35,15 +35,18 @@ function getRentingById(id){
   return db("rentals").where("renter_id", id)
 }
 
-function updateEquipment(owner_id, item_id, changes) {
+function updateEquipment(id, changes) {
   return db("equipment")
-    .where({owner_id})
-    .andWhere({item_id})
+    .where({id})
     .update(changes)
     .then(() => {
       return db("equipment")
-        .where({owner_id, item_id})
+        .where({id})
     })
+}
+
+function removeEquipment(id) {
+  return db('equipment').where({ id: id }).del();
 }
 
 
@@ -57,4 +60,5 @@ module.exports = {
   getOwnedRentalsById,
   getRentingById,
   updateEquipment,
+  removeEquipment,
 };
