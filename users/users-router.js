@@ -102,6 +102,27 @@ router.get('/:id', (req, res) => {
       });
   });
 
+  // update equipment for active user
+  // put request
+  // get the item. 
+  // if the userId and itemId match update item.
+  router.put("/:id/equipment/:itemId", (req, res) => {
+    const { id } = req.params.id
+    const { itemId } = req.params
+    const changes = req.body
+
+    Users.updateEquipment(id, itemId, changes)
+      .then(equip => {
+        if (equip) {
+          res.status(201).json(eqip)
+        } else {
+          res.status(404).json({ message: 'Could not find equipment' })
+        }
+      })
+      .catch(err => {
+        res.status(500).json({ message: 'Failed to update equipment' });
+      });
+  })
 
   router.get("/:id/rentals", (req, res) => {
     const { id } = req.params

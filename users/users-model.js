@@ -35,6 +35,17 @@ function getRentingById(id){
   return db("rentals").where("renter_id", id)
 }
 
+function updateEquipment(owner_id, item_id, changes) {
+  return db("equipment")
+    .where({owner_id})
+    .andWhere({item_id})
+    .update(changes)
+    .then(() => {
+      return db("equipment")
+        .where({owner_id, item_id})
+    })
+}
+
 
 module.exports = {
   get,
@@ -44,5 +55,6 @@ module.exports = {
   remove,
   getEquipmentById,
   getOwnedRentalsById,
-  getRentingById
+  getRentingById,
+  updateEquipment,
 };
