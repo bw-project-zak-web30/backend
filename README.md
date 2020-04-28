@@ -75,19 +75,37 @@ address for requests : https://usemytechstuffmb.herokuapp.com
         ]
 
 # USER owner can update their equipment
-    Put
+    Put /api/users/:id/equipment/:itemId
 
+    BODY - 
     {
-        "id": 5,
-        "name": "Hstern's scanner",
+        "name": "yrdy's scanner",
         "price": 100,
         "timeframe": 7,
-        "details": "you can use my scanner for 7 days",
-        "owner_id": 3
+        "details": "you can use my scanner for 7 days"
     }
 
+    RETURNS - if successful
+    [
+        {
+            "id": 5,
+            "name": "yrdy's scanner",
+            "price": 100,
+            "timeframe": 7,
+            "details": "you can use my scanner for 7 days",
+            "renting": 0,
+            "owner_id": 3
+        }
+    ]
+
+
 ## user owner can delete equipment
-    ENDPOINT IN PROGRESS
+    DELETE /api/users/:id/equipment/:itemId
+
+    RETURNS - if successful
+        {
+            "removed": 1
+        }
 
 ## USER -OWNER- GET for all equipment they are renting out.
     GET /api/users/:id/rentals
