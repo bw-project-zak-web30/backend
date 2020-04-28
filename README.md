@@ -1,5 +1,5 @@
 # backend
-
+address for requests : https://usemytechstuffmb.herokuapp.com
 
 ## Login - Log in as a user. 
     POST - /api/auth/login
@@ -15,7 +15,7 @@
     RETURNS - if successful
         {
             "message": "Welcome!",
-            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjcsInVzZXJuYW1lIjoidGVzdDgiLCJpYXQiOjE1ODgwODg5OTcsImV4cCI6MTU4ODA4OTA1N30.LE57fJZOxhbnAMxY0-tqTg_icGo2LcbhKRrVeieCbXU"
+            "token": "sample token"
         }
 
 ## Register
