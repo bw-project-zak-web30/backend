@@ -95,6 +95,31 @@ address for requests : https://usemytechstuffmb.herokuapp.com
             }
         ]
 
+## USER can add their own equipment
+    POST - /api/users/equipment
+    BODY - 
+    {
+        "owner_id": 1,
+        "name": "test item",
+        "price": 50.00,
+        "timeframe": 7,
+        "details": "testing details"
+    }
+
+    RETURNS - if successful
+    {
+        "message": "equipment added successfully",
+        "data": {
+            "owner_id": 1,
+            "name": "test item3",
+            "price": 50,
+            "timeframe": 7,
+            "details": "testing details"
+        }
+    }
+
+
+
 # USER owner can update their equipment
     Put /api/users/:id/equipment/:itemId
 
