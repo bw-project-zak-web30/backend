@@ -1,5 +1,10 @@
 # backend
 address for requests : https://usemytechstuffmb.herokuapp.com
+                OR   : https://usetechstuffap.herokuapp.com
+
+
+## AUTHENTICATION 
+    all requests with /user/ or /Eqipment/ in the URL will require authentication. Authentication is disabled for now.
 
 ## Login - Log in as a user. 
     POST - /api/auth/login
@@ -53,14 +58,45 @@ address for requests : https://usemytechstuffmb.herokuapp.com
     ENDPOINT IN PROGRESS
 
 
-## USER -OWNER- GET for all equipement they are renting out.
-    ENDPOINT IN PROGRESS
-    have a post for adding a new equi
-    put to update their owned equipment
-    delete owned items.
+## USER -OWNER- GET for all equipment they are renting out.
+    GET /api/users/rentals
 
-## user get all renting. 
+    RETURNS - if successful, an array of rentals
+        [
+            {
+                "id": 1,
+                "return_date": "2020-10-10",
+                "start_date": "2020-10-8",
+                "details": "Rental is only for two days.",
+                "renter_id": 2,
+                "owner_id": 1,
+                "equipment_id": 2
+            }
+        ]
+
+# USER owner can update their equipment
     ENDPOINT IN PROGRESS
+
+## user ownder can delete equipment
+    ENDPOINT IN PROGRESS
+
+
+## user can display all items the are borrowing
+    GET /api/users/:id/renting
+
+    RETURNS - if successful, an array of rentals
+
+    [
+        {
+            "id": 1,
+            "return_date": "2020-10-10",
+            "start_date": "2020-10-8",
+            "details": "Rental is only for two days.",
+            "renter_id": 2,
+            "owner_id": 1,
+            "equipment_id": 2
+        }
+    ]
 
 ## User can see their profile.
     GET /api/users/:id
@@ -80,11 +116,11 @@ address for requests : https://usemytechstuffmb.herokuapp.com
     PUT /api/users/:id
 
     BODY - all fields optional
-    {
-        "username": "sam1",
-        "name": "sam",
-        "city": "Washington DC",
-    }
+        {
+            "username": "sam1",
+            "name": "sam",
+            "city": "Washington DC",
+        }
 
     RETURNS - if successful
         {
