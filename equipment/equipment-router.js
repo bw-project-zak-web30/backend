@@ -1,7 +1,5 @@
 const express = require('express');
 
-const db = require("../database/dbConfig");
-
 const Equipment = require('./equipment-model');
 
 
@@ -25,7 +23,7 @@ router.get('/', (req, res) => {
 // Get equipment by id
 router.get('/:id', (req, res) => {
     const { id } = req.params;
-  
+
     Equipment.getById(id)
     .then(equipment => {
       if (equipment) {
@@ -39,26 +37,20 @@ router.get('/:id', (req, res) => {
     });
   });
 
-  //user click.
-  //reference the item, user, and the owner
-  //get from front-end userId, equipmentId
-
-
   router.post("/", (req, res) => {
-    const rental = req.body
-  
-  console.log(rental)
-  Equipment.rentEquipment(rental)
-  .then(rent => {
-    if (rent) {
-        res.status(201);
-      } else {
-        res.status(404).json({ message: 'Could not find equipment with given id.' })
-      }
-    })
-    .catch(err => {
-      res.status(500).json({ message: 'Failed to add rental', errorMessage: err });
-    });
+    const data = req.body
+    console.log(data)
+    Equipment.rentEquipment(data)
+    .then(rental => {
+      if (rental) {
+          res.status(201).json({data});
+        } else {
+          res.status(404).json({ message: 'Could not find equipment with given id.' })
+        }
+      })
+      .catch(err => {
+        res.status(500).json({ message: 'Failed to add rental', errorMessage: err });
+      });
   })
 
 module.exports = router;

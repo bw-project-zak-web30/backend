@@ -55,7 +55,28 @@ address for requests : https://usemytechstuffmb.herokuapp.com
         ]
 
 ## Select the equipment they want to rent 
-    ENDPOINT IN PROGRESS
+    POST /api/equipment
+
+    {
+      "return_date": "2020-10-10",
+      "start_date": "2020-10-10",
+      "details": "detailed message",
+      "renter_id": 1,
+      "owner_id": 2,
+      "equipment_id": 3
+    }
+
+    RETURNS - if successful
+    {
+        "data": {
+            "return_date": "2020-10-20",
+            "start_date": "2020-10-10",
+            "details": "detailed message",
+            "renter_id": 1,
+            "owner_id": 3,
+            "equipment_id": 5
+        }
+    }
 
 
 ## USER -OWNER- GET for all equipment they own.

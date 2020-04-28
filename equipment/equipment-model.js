@@ -8,7 +8,15 @@ function getById(id) {
 }
 
 function rentEquipment(rental) {
-  return db("rentals").insert(rental)
+      return db("equipment")
+        .where('id', rental.equipment_id)
+        .update({
+          renting: true
+        })
+        .then(() => {
+          return db("rentals").insert(rental)
+        })
+  
 }
 
 
