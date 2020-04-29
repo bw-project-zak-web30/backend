@@ -6,7 +6,7 @@ address for requests : https://usemytechstuffmb.herokuapp.com
 ## AUTHENTICATION 
     all requests with /user/ or  in the URL will require authentication
 
-## Login - Log in as a user. 
+## Login 
     POST - /api/auth/login
 
     BODY - all fields required.
