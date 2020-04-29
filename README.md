@@ -4,7 +4,7 @@ address for requests : https://usemytechstuffmb.herokuapp.com
 
 
 ## AUTHENTICATION 
-    all requests with /user/ or /Eqipment/ in the URL will require authentication. Authentication is disabled for now.
+    all requests with /user/ or  in the URL will require authentication
 
 ## Login - Log in as a user. 
     POST - /api/auth/login
@@ -54,7 +54,7 @@ address for requests : https://usemytechstuffmb.herokuapp.com
             },
         ]
 
-## GET specific equipment by id
+## Get specific equipment by id
     GET - /api/equipment/:id 
 
     RETURNS - if successful
@@ -93,7 +93,7 @@ address for requests : https://usemytechstuffmb.herokuapp.com
     }
 
 
-## USER -OWNER- GET for all equipment they own.
+## User - get all equipment they own.
     GET /api/users/:id/equipment
 
     RETURNS - if successful, an array of equipment
@@ -109,7 +109,7 @@ address for requests : https://usemytechstuffmb.herokuapp.com
             }
         ]
 
-## USER can add their own equipment
+## User can add their own equipment
     POST - /api/users/equipment
     BODY - 
     {
@@ -134,7 +134,7 @@ address for requests : https://usemytechstuffmb.herokuapp.com
 
 
 
-# USER owner can update their equipment
+## User can update equipment they own
     Put /api/users/:id/equipment/:itemId
 
     BODY - 
@@ -159,7 +159,7 @@ address for requests : https://usemytechstuffmb.herokuapp.com
     ]
 
 
-## user owner can delete equipment
+## User can delete equipment they own
     DELETE /api/users/:id/equipment/:itemId
 
     RETURNS - if successful
@@ -167,7 +167,7 @@ address for requests : https://usemytechstuffmb.herokuapp.com
             "removed": 1
         }
 
-## USER -OWNER- GET for all equipment they are renting out.
+## User can get all equipment they are renting out.
     GET /api/users/:id/rentals
 
     RETURNS - if successful, an array of rentals
@@ -183,7 +183,7 @@ address for requests : https://usemytechstuffmb.herokuapp.com
             }
         ]
 
-## user can display all items the are borrowing
+## User can display all items they are borrowing
     GET /api/users/:id/renting
 
     RETURNS - if successful, an array of rentals
@@ -200,7 +200,7 @@ address for requests : https://usemytechstuffmb.herokuapp.com
         }
     ]
 
-## User can see their profile.
+## User can see their profile
     GET /api/users/:id
 
     RETURNS - if successful
