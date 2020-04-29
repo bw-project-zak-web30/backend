@@ -19,11 +19,7 @@ server.use(function(req, res, next) {
 });
 
 server.use('/api/auth', authRouter.router)
-<<<<<<< HEAD
 server.use('/api/users',  usersRouter)
-=======
-server.use('/api/users', usersRouter)
->>>>>>> alan-parker
 server.use('/api/equipment', equipmentRouter)
 
 
