@@ -55,7 +55,28 @@ address for requests : https://usemytechstuffmb.herokuapp.com
         ]
 
 ## Select the equipment they want to rent 
-    ENDPOINT IN PROGRESS
+    POST /api/equipment
+
+    {
+      "return_date": "2020-10-10",
+      "start_date": "2020-10-10",
+      "details": "detailed message",
+      "renter_id": 1,
+      "owner_id": 2,
+      "equipment_id": 3
+    }
+
+    RETURNS - if successful
+    {
+        "data": {
+            "return_date": "2020-10-20",
+            "start_date": "2020-10-10",
+            "details": "detailed message",
+            "renter_id": 1,
+            "owner_id": 3,
+            "equipment_id": 5
+        }
+    }
 
 
 ## USER -OWNER- GET for all equipment they own.
@@ -73,6 +94,31 @@ address for requests : https://usemytechstuffmb.herokuapp.com
                 "owner_id": 3
             }
         ]
+
+## USER can add their own equipment
+    POST - /api/users/equipment
+    BODY - 
+    {
+        "owner_id": 1,
+        "name": "test item",
+        "price": 50.00,
+        "timeframe": 7,
+        "details": "testing details"
+    }
+
+    RETURNS - if successful
+    {
+        "message": "equipment added successfully",
+        "data": {
+            "owner_id": 1,
+            "name": "test item3",
+            "price": 50,
+            "timeframe": 7,
+            "details": "testing details"
+        }
+    }
+
+
 
 # USER owner can update their equipment
     Put /api/users/:id/equipment/:itemId
