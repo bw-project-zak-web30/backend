@@ -29,7 +29,7 @@ router.get('/:id', (req, res) => {
     Equipment.getById(id)
     .then(equipment => {
       if (equipment) {
-        res.json(equipment);
+        res.status(200).json(equipment);
       } else {
         res.status(404).json({ message: 'Could not find equipment with given id.' })
       }

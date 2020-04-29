@@ -4,6 +4,7 @@ const server = require ('../api/server')
 
 
 beforeEach(async () => {
+    jest.setTimeout(10000);
     await db('users').truncate();
 });
 

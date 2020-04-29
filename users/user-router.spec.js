@@ -27,6 +27,7 @@ let equipmenttest =   {
 let token;
 
 beforeEach(async () => {
+    jest.setTimeout(10000);
     token = auth.generateToken(tester);
     await db('users')
     .truncate()
