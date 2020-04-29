@@ -15,7 +15,7 @@ describe('POST /api/auth/register', () => {
         let res = await request(server)
             .post('/api/auth/register')
             .send({
-                username: 'alantest',
+                username: 'alantest111',
                 password: 'password',
                 city: "DC", 
                 name: "alan"
@@ -46,7 +46,7 @@ describe('POST /api/auth/login', () => {
         let res = await request(server)
             .post('/api/auth/register')
             .send({
-                username: 'alantest',
+                username: 'alantesting9999999',
                 password: 'password',
                 city: "DC", 
                 name: "alan"
@@ -57,18 +57,20 @@ describe('POST /api/auth/login', () => {
         res = await request(server)
             .post('/api/auth/login')
             .send({
-                username: 'alantest',
+                username: 'alantesting9999999',
                 password: 'password'
             })
         expect(res.status).toBe(200);
         done();
+
+        
     })
     it('Responds with 401 when invalid credentials', async done => {
         // register user to db
         let res = await request(server)
             .post('/api/auth/register')
             .send({
-                username: 'alantest',
+                username: 'alantesting000',
                 password: 'password',
                 city: "DC", 
                 name: "alan"
@@ -79,10 +81,15 @@ describe('POST /api/auth/login', () => {
         res = await request(server)
             .post('/api/auth/login')
             .send({
-                username: 'alantest',
+                username: 'alantest000',
                 password: 'wrongpassword'
             })
         expect(res.status).toBe(401);
         done();
     })
 })
+
+
+
+
+

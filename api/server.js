@@ -19,7 +19,7 @@ server.use(function(req, res, next) {
 });
 
 server.use('/api/auth', authRouter)
-server.use('/api/users', usersRouter)
+server.use('/api/users', authenticator, usersRouter)
 server.use('/api/equipment', equipmentRouter)
 
 

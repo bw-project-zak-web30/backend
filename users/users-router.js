@@ -25,13 +25,13 @@ router.get('/:id', (req, res) => {
     Users.getById(id)
     .then(user => {
       if (user) {
-        res.json(user);
+        res.status(201).json(user);
       } else {
         res.status(404).json({ message: 'Could not find user with given id.' })
       }
     })
     .catch(err => {
-      res.status(500).json({ message: 'Failed to get Users' });
+      res.status(500).json({ message: 'Failed to get Users', error:err.message });
     });
   });
 
