@@ -1,13 +1,26 @@
 const request = require('supertest')
 const db = require('../database/dbConfig')
 const server = require('../api/server')
+const auth = require('../auth/auth-router')
 
+
+describe("user router", () => {
+const tester = {
+    id: 1,
+    username: 'tester',
+    password: 'password',
+    city: "DC",
+    name: "tester"
+};
+
+let token;
 
 beforeEach(async () => {
     await db('users').truncate();
+    token = auth.generateToken(tester);
+    return db("users")
+    .insert(tester)
 });
-
-
 
 describe('GET /api/users', () => {
     it('Responds with 400 if not authenticated', async done => {
@@ -25,63 +38,15 @@ describe('GET /api/users', () => {
 })
 
 
-
-describe('get /api/user/:id', () => {
-const user = {
-    
-}
-
-
-    it('register user to db', async done => {
-        let res = await request(server)
-            .post('/api/auth/register')
-            .send({
-                username: 'alan',
-                password: 'password',
-                city: "DC",
-                name: "alan"
-            })
-        expect(res.status).toBe(201);
-
-
-
-
-        res = await request(server).post('/api/auth/login')
-            .send({
-                username: 'alan',
-                password: 'password'
-            })
-        expect(res.status).toBe(200);
-        done();
-    })
-
-
-    it('trys gets id that is not there and throws error', async done => {
-
-        let res = await request(server)
-            .post('/api/auth/register')
-            .send({
-                username: 'alan',
-                password: 'password',
-                city: "DC",
-                name: "alan"
-            })
-        
-        res = await request(server).post('/api/auth/login')
-            .send({
-                username: 'alan',
-                password: 'password'
-            })
-       
-         res = await request(server)
-            .get('/api/users/1111')
-        expect(res.status).toBe(404)
-
-        done();
-    })
-
-
-
+describe("GET /api/users/:id", () => {
+    it("should return 200", async () => {
+      const res = await request(server)
+        .get(`/api/users/${tester.id}`)
+        .set("Authorization", token);
+      expect(res.status).toBe(201);
+    });
 })
+})
+
 
 

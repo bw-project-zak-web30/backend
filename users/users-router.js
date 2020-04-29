@@ -10,7 +10,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   Users.get()
   .then(Users => {
-    res.json(Users);
+    res.status(201).json(Users);
   })
   .catch(err => {
     res.status(500).json({ message: 'Failed to get Users' });
