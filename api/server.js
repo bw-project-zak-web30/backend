@@ -3,6 +3,7 @@ const helmet = require("helmet")
 
 const authenticator = require("../middleware/authenticator")
 
+
 const authRouter = require("../auth/auth-router.js")
 const usersRouter = require("../users/users-router.js")
 const equipmentRouter = require("../equipment/equipment-router.js")

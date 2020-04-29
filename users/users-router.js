@@ -119,7 +119,7 @@ router.get('/:id', (req, res) => {
         }
       })
       .catch(err => {
-        res.status(500).json({ message: 'Failed to add equipment' });
+        res.status(500).json({ message: 'Failed to add equipment', errorMessage: err });
       });
   })
 
