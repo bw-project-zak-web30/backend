@@ -105,8 +105,12 @@ router.get('/:id', (req, res) => {
   router.post('/:id/equipment', (req, res) => {
     const { id } = req.params
     const data = req.body
+    const equipment = {
+      ...req.body,
+      owner_id: id
+    }
 
-    Users.addEquipment(data)
+    Users.addEquipment(equipment)
       .then(equip => {
         if (equip) {
           res.status(201).json({message: "equipment added successfully", data});
