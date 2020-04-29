@@ -54,6 +54,20 @@ address for requests : https://usemytechstuffmb.herokuapp.com
             },
         ]
 
+## GET specific equipment by id
+    GET - /api/equipment/:id 
+
+    RETURNS - if successful
+        {
+            "id": 2,
+            "name": "Bobby's printer",
+            "price": "20.00",
+            "timeframe": 5,
+            "details": "I'll drop this printer off anywhere in my city",
+            "renting": true,
+            "owner_id": 2
+        }
+
 ## Select the equipment they want to rent 
     POST /api/equipment
 
