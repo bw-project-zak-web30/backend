@@ -92,7 +92,7 @@ router.get('/:id', (req, res) => {
     Users.getEquipmentById(id)
       .then(equip => {
         if (equip) {
-          res.json(equip);
+          res.status(201).json(equip);
         } else {
           res.status(404).json({ message: 'Could not find equipment with given user id.' })
         }
@@ -142,7 +142,7 @@ router.get('/:id', (req, res) => {
     Users.getOwnedRentalsById(id)
       .then(equip => {
         if (equip) {
-          res.json(equip);
+          res.status(201).json(equip);
         } else {
           res.status(404).json({ message: 'Could not find any rentals with given user id.' })
         }
@@ -158,7 +158,7 @@ router.get('/:id', (req, res) => {
     Users.getRentingById(id)
       .then(equip => {
         if (equip) {
-          res.json(equip);
+          res.status(201).json(equip);
         } else {
           res.status(404).json({ message: 'Could not find any rentals with given user id.' })
         }

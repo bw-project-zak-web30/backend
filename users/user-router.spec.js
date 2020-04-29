@@ -46,6 +46,34 @@ describe("GET /api/users/:id", () => {
       expect(res.status).toBe(201);
     });
 })
+
+describe("GET /api/users/:id/equipment", () => {
+    it("should return 201 when getting users equipment by id", async () => {
+      const res = await request(server)
+        .get(`/api/users/${tester.id}/equipment`)
+        .set("Authorization", token);
+      expect(res.status).toBe(201);
+    });
+})
+
+describe("GET /api/users/:id/rentals", () => {
+    it("should return 201 when getting users rentals by id", async () => {
+      const res = await request(server)
+        .get(`/api/users/${tester.id}/rentals`)
+        .set("Authorization", token);
+      expect(res.status).toBe(201);
+    });
+})
+
+describe("GET /api/users/:id/renting", () => {
+    it("should return 201 when getting what users are renting by id", async () => {
+      const res = await request(server)
+        .get(`/api/users/${tester.id}/renting`)
+        .set("Authorization", token);
+      expect(res.status).toBe(201);
+    });
+})
+
 })
 
 
