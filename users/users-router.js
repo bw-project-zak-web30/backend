@@ -10,7 +10,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
   Users.get()
   .then(Users => {
-    res.status(201).json(Users);
+    res.status(200).json(Users);
   })
   .catch(err => {
     res.status(500).json({ message: 'Failed to get Users' });
@@ -25,7 +25,7 @@ router.get('/:id', (req, res) => {
     Users.getById(id)
     .then(user => {
       if (user) {
-        res.status(201).json(user);
+        res.status(200).json(user);
       } else {
         res.status(404).json({ message: 'Could not find user with given id.' })
       }
@@ -39,7 +39,7 @@ router.get('/:id', (req, res) => {
   router.post("/", (req, res) => {
     Users.add(req.body)
       .then((user) => {
-        res.status(201).json(user);
+        res.status(200).json(user);
       })
       .catch((err) => {
         console.log(err);
@@ -57,7 +57,7 @@ router.get('/:id', (req, res) => {
       if (user) {
         Users.update(changes, id)
         .then(updatedUser => {
-          res.json(updatedUser);
+          res.status(200).json(updatedUser);
         });
       } else {
         res.status(404).json({ message: 'Could not find user with given id' });
@@ -75,7 +75,7 @@ router.get('/:id', (req, res) => {
     Users.remove(id)
     .then(deleted => {
       if (deleted) {
-        res.json({ removed: deleted });
+        res.status(200).json({ removed: deleted });
       } else {
         res.status(404).json({ message: 'Could not find user with given id' });
       }
@@ -92,7 +92,7 @@ router.get('/:id', (req, res) => {
     Users.getEquipmentById(id)
       .then(equip => {
         if (equip) {
-          res.status(201).json(equip);
+          res.status(200).json(equip);
         } else {
           res.status(404).json({ message: 'Could not find equipment with given user id.' })
         }
@@ -110,7 +110,7 @@ router.get('/:id', (req, res) => {
     Users.updateEquipment(itemId, changes)
       .then(equip => {
         if (equip) {
-          res.status(201).json(equip)
+          res.status(200).json(equip)
         } else {
           res.status(404).json({ message: 'Could not find equipment', })
         }
@@ -142,7 +142,7 @@ router.get('/:id', (req, res) => {
     Users.getOwnedRentalsById(id)
       .then(equip => {
         if (equip) {
-          res.status(201).json(equip);
+          res.status(200).json(equip);
         } else {
           res.status(404).json({ message: 'Could not find any rentals with given user id.' })
         }
@@ -158,7 +158,7 @@ router.get('/:id', (req, res) => {
     Users.getRentingById(id)
       .then(equip => {
         if (equip) {
-          res.status(201).json(equip);
+          res.status(200).json(equip);
         } else {
           res.status(404).json({ message: 'Could not find any rentals with given user id.' })
         }
