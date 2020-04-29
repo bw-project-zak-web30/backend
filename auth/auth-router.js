@@ -59,7 +59,7 @@ function generateToken(user) {
   };
   const secret = secrets.jwtSecret;
   const options = {
-    expiresIn: "30m",
+    expiresIn: "120m",
   };
 
   return jwt.sign(payload, secret, options);
